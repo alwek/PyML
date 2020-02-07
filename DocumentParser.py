@@ -1,4 +1,3 @@
-# importing required modules 
 from PyPDF2 import PdfFileReader
 import re
 
