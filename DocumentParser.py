@@ -43,3 +43,4 @@ class DocumentParser:
         print(pageObj.extractText()) 
         # closing the pdf file object 
         pdfFileObj.close()
+        
