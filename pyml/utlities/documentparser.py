@@ -1,19 +1,19 @@
-from PyPDF2 import PdfFileReader
 import re
+from PyPDF2 import PdfFileReader
 
 class DocumentParser:
-    def __init__(self, docFile, type, mode):
+    def __init__(self, docFile, filetype, mode):
         self.docFile = docFile
-        self.type = type
+        self.filetype = filetype
         self.mode = mode
-    
+
     def getWords(self):
-        if self.type == "txt":
+        if self.filetype == "txt":
             return self.getWordsFromText()
-        elif self.type == "pdf":
+        elif self.filetype == "pdf":
             return self.getWordsFromPDF()
         else:
-            return 'Unknown type of file.'
+            return 'Unknown filetype of file.'
 
     def getWordsFromText(self):
         textFile = open(self.docFile, self.mode)
@@ -25,21 +25,15 @@ class DocumentParser:
             words = line.split()
             for word in words:
                 array.append(regex.sub("", word))
-        
+
         textFile.close()
         return array
-    
+
     def getWordsFromPDF(self):
-        # creating a pdf file object 
-        pdfFileObj = open(self.docFile, self.mode) 
-        # creating a pdf reader object 
+        pdfFileObj = open(self.docFile, self.mode)
         pdfReader = PdfFileReader(pdfFileObj)
-        # printing number of pages in pdf file 
-        print(pdfReader.numPages) 
-        # creating a page object 
-        pageObj = pdfReader.getPage(0) 
-        # extracting text from page 
-        print(pageObj.extractText()) 
-        # closing the pdf file object 
+        print(pdfReader.numPages)
+        pageObj = pdfReader.getPage(0)
+        print(pageObj.extractText())
         pdfFileObj.close()
         

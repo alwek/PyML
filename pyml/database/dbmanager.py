@@ -1,5 +1,5 @@
 import psycopg2
-from configmanager import config
+from pyml.database.configmanager import config
 
 class DbManager:
     def __init__(self):
@@ -69,7 +69,7 @@ class DbManager:
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
             return False
-    
+
     def delete_author(self, author_id):
         if self.connection is None:
             print("Connection to db is not open.")

@@ -3,5 +3,5 @@ class Author:
     name: str
 
     def __init__(self, name: str, authorid: int = None):
-        self.authorid = id
+        self.authorid = authorid
         self.name = name
